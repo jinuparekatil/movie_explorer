@@ -1,31 +1,20 @@
-import '../../domain/entities/movie.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class MovieModel extends Movie {
-  const MovieModel({
-    required super.id,
-    required super.title,
-    required super.overview,
-    required super.posterPath,
-    required super.voteAverage,
-  });
+part 'movie_model.freezed.dart';
+part 'movie_model.g.dart';
 
-  factory MovieModel.fromJson(Map<String, dynamic> json) {
-    return MovieModel(
-      id: json['id'] as int,
-      title: json['title'] as String,
-      overview: json['overview'] as String,
-      posterPath: json['poster_path'] as String? ?? '',
-      voteAverage: (json['vote_average'] as num).toDouble(),
-    );
-  }
+@freezed
+class MovieModel with _$MovieModel {
+  const factory MovieModel({
+    required int id,
+    required String title,
+    required String overview,
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'title': title,
-      'overview': overview,
-      'poster_path': posterPath,
-      'vote_average': voteAverage,
-    };
-  }
+    @JsonKey(name: 'poster_path') required String posterPath,
+
+    @JsonKey(name: 'vote_average') required double voteAverage,
+  }) = _MovieModel;
+
+  factory MovieModel.fromJson(Map<String, dynamic> json) =>
+      _$MovieModelFromJson(json);
 }
