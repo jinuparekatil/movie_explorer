@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../features/home/presentation/pages/home_page.dart';
+import 'package:movie_explorer/app/router/app_router.dart';
 import 'theme/app_theme.dart';
 
 class MovieExplorerApp extends StatelessWidget {
@@ -7,11 +7,11 @@ class MovieExplorerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Movie Explorer',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
-      home: HomePage(),
+      routerConfig: AppRouter.router,
     );
   }
 }
