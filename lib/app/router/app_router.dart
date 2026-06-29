@@ -7,11 +7,6 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
     initialLocation: '/',
-    routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const HomePage(),
-      ),
-    ],
+    routes: [GoRoute(path: '/', builder: (context, state) => const HomePage())],
   );
 }
