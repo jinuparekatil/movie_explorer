@@ -11,8 +11,8 @@ _$MovieModelImpl _$$MovieModelImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       overview: json['overview'] as String,
-      posterPath: json['poster_path'] as String,
-      voteAverage: (json['vote_average'] as num).toDouble(),
+      posterPath: json['posterPath'] as String,
+      voteAverage: (json['voteAverage'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$MovieModelImplToJson(_$MovieModelImpl instance) =>
@@ -20,6 +20,6 @@ Map<String, dynamic> _$$MovieModelImplToJson(_$MovieModelImpl instance) =>
       'id': instance.id,
       'title': instance.title,
       'overview': instance.overview,
-      'poster_path': instance.posterPath,
-      'vote_average': instance.voteAverage,
+      'posterPath': instance.posterPath,
+      'voteAverage': instance.voteAverage,
     };
