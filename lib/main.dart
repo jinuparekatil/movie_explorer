@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'app/app.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'features/movies/data/datasource/movie_remote_data_source.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await dotenv.load(fileName: ".env");
+  final movies = await MovieRemoteDataSource().getPopularMovies();
 
-  runApp(const ProviderScope(child: MovieExplorerApp()));
+  debugPrint('Movies fetched: ${movies.length}');
+  debugPrint(movies.first.title);
+
+  runApp(
+    const ProviderScope(
+      child: Placeholder(),
+    ),
+  );
 }

@@ -24,9 +24,7 @@ mixin _$MovieModel {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
-  @JsonKey(name: 'poster_path')
   String get posterPath => throw _privateConstructorUsedError;
-  @JsonKey(name: 'vote_average')
   double get voteAverage => throw _privateConstructorUsedError;
 
   /// Serializes this MovieModel to a JSON map.
@@ -50,8 +48,8 @@ abstract class $MovieModelCopyWith<$Res> {
     int id,
     String title,
     String overview,
-    @JsonKey(name: 'poster_path') String posterPath,
-    @JsonKey(name: 'vote_average') double voteAverage,
+    String posterPath,
+    double voteAverage,
   });
 }
 
@@ -117,8 +115,8 @@ abstract class _$$MovieModelImplCopyWith<$Res>
     int id,
     String title,
     String overview,
-    @JsonKey(name: 'poster_path') String posterPath,
-    @JsonKey(name: 'vote_average') double voteAverage,
+    String posterPath,
+    double voteAverage,
   });
 }
 
@@ -176,8 +174,8 @@ class _$MovieModelImpl implements _MovieModel {
     required this.id,
     required this.title,
     required this.overview,
-    @JsonKey(name: 'poster_path') required this.posterPath,
-    @JsonKey(name: 'vote_average') required this.voteAverage,
+    required this.posterPath,
+    required this.voteAverage,
   });
 
   factory _$MovieModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -190,10 +188,8 @@ class _$MovieModelImpl implements _MovieModel {
   @override
   final String overview;
   @override
-  @JsonKey(name: 'poster_path')
   final String posterPath;
   @override
-  @JsonKey(name: 'vote_average')
   final double voteAverage;
 
   @override
@@ -240,8 +236,8 @@ abstract class _MovieModel implements MovieModel {
     required final int id,
     required final String title,
     required final String overview,
-    @JsonKey(name: 'poster_path') required final String posterPath,
-    @JsonKey(name: 'vote_average') required final double voteAverage,
+    required final String posterPath,
+    required final double voteAverage,
   }) = _$MovieModelImpl;
 
   factory _MovieModel.fromJson(Map<String, dynamic> json) =
@@ -254,10 +250,8 @@ abstract class _MovieModel implements MovieModel {
   @override
   String get overview;
   @override
-  @JsonKey(name: 'poster_path')
   String get posterPath;
   @override
-  @JsonKey(name: 'vote_average')
   double get voteAverage;
 
   /// Create a copy of MovieModel
