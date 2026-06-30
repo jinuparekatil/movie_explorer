@@ -1,4 +1,3 @@
-
 import '../entities/movie.dart';
 
 abstract class MovieRepository {

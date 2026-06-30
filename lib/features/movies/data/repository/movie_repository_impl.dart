@@ -1,4 +1,3 @@
-
 import 'package:movie_explorer/features/movies/data/models/movie_model.dart';
 
 import '../../domain/entities/movie.dart';
