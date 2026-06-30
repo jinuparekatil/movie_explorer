@@ -3,10 +3,38 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:movie_explorer/app/app.dart';
 
-void main() {
-  testWidgets('displays Movie Explorer title', (tester) async {
-    await tester.pumpWidget(const ProviderScope(child: MovieExplorerApp()));
+import 'package:movie_explorer/features/movies/data/providers/movie_data_provider.dart';
+import 'package:movie_explorer/features/movies/domain/entities/movie.dart';
+import 'package:movie_explorer/features/movies/domain/repositories/movie_repository.dart';
 
-    expect(find.text('Movie Explorer'), findsOneWidget);
+class FakeMovieRepository implements MovieRepository {
+  @override
+  Future<List<Movie>> getPopularMovies() async {
+    return const [
+      Movie(
+        id: 1,
+        title: 'Test Movie',
+        overview: 'Test Overview',
+        posterPath: '',
+        voteAverage: 8.5,
+      ),
+    ];
+  }
+}
+
+void main() {
+  testWidgets('Movie Explorer loads', (tester) async {
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          movieRepositoryProvider.overrideWithValue(FakeMovieRepository()),
+        ],
+        child: const MovieExplorerApp(),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+
+    expect(find.text('Test Movie'), findsOneWidget);
   });
 }
